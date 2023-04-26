@@ -2,10 +2,13 @@ import { useState } from "react";
 import { uid } from "uid";
 import List from "./components/List";
 import Form from "./components/Form";
+import useLocalStorageState from "use-local-storage-state";
 import "./styles.css";
 
 export default function App() {
-  const [todos, setTodos] = useState([]);
+  const [todos, setTodos] = useLocalStorageState("todos", {
+    defaultValue: [],
+  });
 
   function handleAddTodo(title) {
     setTodos([
